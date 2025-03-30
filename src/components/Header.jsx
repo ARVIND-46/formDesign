@@ -1,10 +1,16 @@
 import React from 'react'
 import '../styles/styles.css'
+import logo from '../img/kpr.png'
 
 const Header = () => {
   return (
    <div className='header'>
-    <h3>KPR Institute of Engineering and Technology</h3>
+    <img src={logo}alt="" />
+    <p>KPR Institute of Engineering and Technology</p>
+    <div>
+      <h1>IEEE</h1>
+    </div>
+
    </div>
   )
 }
