@@ -1,6 +1,6 @@
 import '../styles/Styles.css'
 import React, { useState } from 'react';
-import { db } from '../firebase'; // Ensure correct Firestore import
+import { db } from '../firebase';
 import { collection, addDoc } from "firebase/firestore"; 
 
 const Form = () => {
@@ -39,6 +39,11 @@ const Form = () => {
   };
 
   return (
+    <>
+    <div className='content'>
+      <h1>HACK THE HORIZON</h1>
+      <h1>PARTICIPANT DETAILS</h1>
+    </div>
     <div className='form'>
       <label htmlFor="name">NAME:</label>
       <input type="text" name="name" value={formData.name} onChange={handleChange} />
@@ -52,8 +57,9 @@ const Form = () => {
       <label htmlFor="college">COLLEGE:</label>
       <input type="text" name="college" value={formData.college} onChange={handleChange} />
 
-      <button onClick={handleSubmit}>Save</button> {/* ✅ Call handleSubmit onClick */}
+      <button onClick={handleSubmit}>Save</button> {/* Call handleSubmit onClick */}
     </div>
+    </>
   );
 };
 

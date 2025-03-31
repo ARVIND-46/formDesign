@@ -11,17 +11,17 @@ body{
     width: 100%;
     background-color:black; 
     color: white;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap :20px;
-    font-size: 24px;
+    font-size: 20px;
 }
 .header img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 .header div{
     margin-left: auto;
@@ -44,6 +44,10 @@ body{
 .form {
     display: flex;
     justify-content: center;
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     flex-direction: column;
     width: 300px;
     margin: calc(50vh - 200px) auto 0;
