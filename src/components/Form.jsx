@@ -1,21 +1,42 @@
-
 import '../styles/Styles.css'
-import React,{useState} from 'react'
+import React, { useState } from 'react';
+import { db } from '../firebase'; // Ensure correct Firestore import
+import { collection, addDoc } from "firebase/firestore"; 
 
 const Form = () => {
-  const [formData,setFormData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     teamName: '',
     teamId: '',
     college: '',
   });
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
-  
+
+  const handleSubmit = async () => {
+    try {
+      // Adding data to Firestore "teams" collection
+      const docRef = await addDoc(collection(db, "teams"), formData);
+      console.log("Document written with ID: ", docRef.id);
+      alert("Data successfully added!");
+
+      // Clear form after submission
+      setFormData({
+        name: '',
+        teamName: '',
+        teamId: '',
+        college: '',
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert(`Failed to add data! ${error.message}`);
+    }
+  };
 
   return (
     <div className='form'>
@@ -30,9 +51,10 @@ const Form = () => {
 
       <label htmlFor="college">COLLEGE:</label>
       <input type="text" name="college" value={formData.college} onChange={handleChange} />
-      <button>Save</button>
-    </div>
-  )
-}
 
-export default Form
+      <button onClick={handleSubmit}>Save</button> {/* ✅ Call handleSubmit onClick */}
+    </div>
+  );
+};
+
+export default Form;
